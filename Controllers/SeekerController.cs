@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DIENAPPRESTAPI.Controllers
 
 {
-    [Route("api/[controller]")]
+    [Route("dienapp /[controller] /[action]")]
     [ApiController]
     public class SeekerController : ControllerBase
     {
@@ -21,8 +21,8 @@ namespace DIENAPPRESTAPI.Controllers
         }
 
         // GET: api/SeekerItems
-        [HttpGet("/dienapp/seeker/getallseeker")]
-        public async Task<ActionResult<IEnumerable<Models.SeekerModel>>> GetSeekerItem()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Models.SeekerModel>>> GetAllSeeker()
         {
             if (_context.SeekerItem == null)
             {
@@ -32,8 +32,8 @@ namespace DIENAPPRESTAPI.Controllers
         }
 
         // GET: api/SeekerItems/5
-        [HttpGet("/dienapp/seeker/getseeker/{id}")]
-        public async Task<ActionResult<Models.SeekerModel>> GetSeekerItem(long id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Models.SeekerModel>> GetSeekerById(long id)
         {
             if (_context.SeekerItem == null)
             {
@@ -51,8 +51,8 @@ namespace DIENAPPRESTAPI.Controllers
 
         // PUT: api/SeekerItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("/dienapp/seeker/updateseeker/{id}")]
-        public async Task<IActionResult> SeekerItem(long id, Models.SeekerModel seekerItem)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateSeeker(long id, Models.SeekerModel seekerItem)
         {
             if (id != seekerItem.Id)
             {
@@ -82,19 +82,19 @@ namespace DIENAPPRESTAPI.Controllers
 
         // POST: api/SeekerItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("/dienapp/seeker/createseeker")]
-        public async Task<ActionResult<Models.SeekerModel>> PostSeekerItem(Models.SeekerModel seekerItem)
+        [HttpPost]
+        public async Task<ActionResult<Models.SeekerModel>> CreateProvider(Models.SeekerModel seekerItem)
         {
             _context.SeekerItem.Add(seekerItem);
             await _context.SaveChangesAsync();
 
             //    return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
-            return CreatedAtAction(nameof(GetSeekerItem), new { id = seekerItem.Id }, seekerItem);
+            return CreatedAtAction(nameof(GetAllSeeker), new { id = seekerItem.Id }, seekerItem);
         }
 
         // DELETE: api/SeekerItems/5
-        [HttpDelete("/dienapp/seeker/deleteseeker/{id}")]
-        public async Task<IActionResult> DeleteSeekerItem(long id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSeeker(long id)
         {
             if (_context.SeekerItem == null)
             {

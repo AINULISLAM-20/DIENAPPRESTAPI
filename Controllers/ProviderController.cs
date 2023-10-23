@@ -83,16 +83,14 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Provider
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Models.ProviderModel>> CreateProvider(Models.ProviderModel provider)
+        public async Task<ActionResult<Models.ProviderModel>> CreateProvider(Models.ProviderModel providerItem)
         {
-          if (_context.ProviderItem == null)
-          {
-              return Problem("Entity set 'Provider.ProviderItem'  is null.");
-          }
-            _context.ProviderItem.Add(provider);
+            _context.ProviderItem.Add(providerItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProvider", new { id = provider.Id }, provider);
+            //    return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            return CreatedAtAction(nameof(GetAllProvider), new { id = providerItem.Id }, providerItem);
+
         }
 
         // DELETE: api/Provider/5
