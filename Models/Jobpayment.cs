@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace DIENAPPRESTAPI.Models;
+﻿namespace DIENAPPRESTAPI.Models;
 
 public partial class Jobpayment
 {
-    [Key]
     public int? JobpaymentId { get; set; }
 
     public int? Jobid { get; set; }
