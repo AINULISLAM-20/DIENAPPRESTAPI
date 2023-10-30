@@ -5,41 +5,42 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using DIENAPPRESTAPI.Data;
+using DIENAPPRESTAPI.Models;
 
 namespace DIENAPPRESTAPI.Controllers
 {
-    [Route("dienapp/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class Provider : ControllerBase
+    public class ProvidersController : ControllerBase
     {
-        private readonly Contexts.ProviderContext _context;
+        private readonly DIENAPPRESTAPIContext _context;
 
-        public Provider(Contexts.ProviderContext context)
+        public ProvidersController(DIENAPPRESTAPIContext context)
         {
             _context = context;
         }
 
-        // GET: api/Provider
+        // GET: api/Providers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Models.ProviderModel>>> GetAllProvider()
+        public async Task<ActionResult<IEnumerable<Provider>>> GetProviders()
         {
-
-          if (_context.ProviderItem == null)
+          if (_context.Providers == null)
           {
               return NotFound();
           }
-            return await _context.ProviderItem.ToListAsync();
+            return await _context.Providers.ToListAsync();
         }
 
-        // GET: api/Provider/5
+        // GET: api/Providers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Models.ProviderModel>> GetProviderById(long id)
+        public async Task<ActionResult<Provider>> GetProvider(int id)
         {
-          if (_context.ProviderItem == null)
+          if (_context.Providers == null)
           {
               return NotFound();
           }
-            var provider = await _context.ProviderItem.FindAsync(id);
+            var provider = await _context.Providers.FindAsync(id);
 
             if (provider == null)
             {
@@ -49,12 +50,12 @@ namespace DIENAPPRESTAPI.Controllers
             return provider;
         }
 
-        // PUT: api/Provider/5
+        // PUT: api/Providers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProvider(long id, Models.ProviderModel provider)
+        public async Task<IActionResult> PutProvider(int id, Provider provider)
         {
-            if (id != provider.Id)
+            if (id != provider.ProviderId)
             {
                 return BadRequest();
             }
@@ -80,42 +81,44 @@ namespace DIENAPPRESTAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Provider
+        // POST: api/Providers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Models.ProviderModel>> CreateProvider(Models.ProviderModel providerItem)
+        public async Task<ActionResult<Provider>> PostProvider(Provider provider)
         {
-            _context.ProviderItem.Add(providerItem);
+          if (_context.Providers == null)
+          {
+              return Problem("Entity set 'DIENAPPRESTAPIContext.Providers'  is null.");
+          }
+            _context.Providers.Add(provider);
             await _context.SaveChangesAsync();
 
-            //    return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
-            return CreatedAtAction(nameof(GetAllProvider), new { id = providerItem.Id }, providerItem);
-
+            return CreatedAtAction("GetProvider", new { id = provider.ProviderId }, provider);
         }
 
-        // DELETE: api/Provider/5
+        // DELETE: api/Providers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProvider(long id)
+        public async Task<IActionResult> DeleteProvider(int id)
         {
-            if (_context.ProviderItem == null)
+            if (_context.Providers == null)
             {
                 return NotFound();
             }
-            var provider = await _context.ProviderItem.FindAsync(id);
+            var provider = await _context.Providers.FindAsync(id);
             if (provider == null)
             {
                 return NotFound();
             }
 
-            _context.ProviderItem.Remove(provider);
+            _context.Providers.Remove(provider);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProviderExists(long id)
+        private bool ProviderExists(int id)
         {
-            return (_context.ProviderItem?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Providers?.Any(e => e.ProviderId == id)).GetValueOrDefault();
         }
     }
 }

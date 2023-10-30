@@ -1,17 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 
-using DIENAPPRESTAPI.Contexts;
+using DIENAPPRESTAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<SeekerContext>(opt =>
-    opt.UseInMemoryDatabase("SeekerItem"));
-
-builder.Services.AddDbContext<ProviderContext>(opt =>
-    opt.UseInMemoryDatabase("ProviderItem"));
-
+builder.Services.AddDbContext<DIENAPPRESTAPIContext>(
+options =>
+{
+    options.UseMySql(builder.Configuration.GetConnectionString("DienappDB"),
+    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,5 +30,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-Console.WriteLine("Hello World!");
