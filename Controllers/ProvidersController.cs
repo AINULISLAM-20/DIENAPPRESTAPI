@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Providers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Provider>>> GetProviders()
+        public async Task<ActionResult<IEnumerable<Provider>>> GetAllProviders()
         {
           if (_context.Providers == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Providers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Provider>> GetProvider(int id)
+        public async Task<ActionResult<Provider>> GetProviderById(int id)
         {
           if (_context.Providers == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Providers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProvider(int id, Provider provider)
+        public async Task<IActionResult> updateProviderById(int id, Provider provider)
         {
             if (id != provider.ProviderId)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Providers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Provider>> PostProvider(Provider provider)
+        public async Task<ActionResult<Provider>> CreateProvider(Provider provider)
         {
           if (_context.Providers == null)
           {
@@ -98,7 +98,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Providers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProvider(int id)
+        public async Task<IActionResult> DeleteProviderById(int id)
         {
             if (_context.Providers == null)
             {

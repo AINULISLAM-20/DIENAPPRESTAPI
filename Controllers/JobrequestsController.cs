@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Jobrequests
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Jobrequest>>> GetJobrequests()
+        public async Task<ActionResult<IEnumerable<Jobrequest>>> GetAllJobrequests()
         {
           if (_context.Jobrequests == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Jobrequests/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Jobrequest>> GetJobrequest(int id)
+        public async Task<ActionResult<Jobrequest>> GetJobrequesById(int id)
         {
           if (_context.Jobrequests == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Jobrequests/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutJobrequest(int id, Jobrequest jobrequest)
+        public async Task<IActionResult> UpdateJobrequestById(int id, Jobrequest jobrequest)
         {
             if (id != jobrequest.Jobrequestid)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Jobrequests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Jobrequest>> PostJobrequest(Jobrequest jobrequest)
+        public async Task<ActionResult<Jobrequest>> CreateJobrequest(Jobrequest jobrequest)
         {
           if (_context.Jobrequests == null)
           {
@@ -112,7 +112,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Jobrequests/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteJobrequest(int id)
+        public async Task<IActionResult> DeleteJobrequestById(int id)
         {
             if (_context.Jobrequests == null)
             {

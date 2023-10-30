@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Rates
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Rate>>> GetRates()
+        public async Task<ActionResult<IEnumerable<Rate>>> GetAllRates()
         {
           if (_context.Rates == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Rates/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Rate>> GetRate(int id)
+        public async Task<ActionResult<Rate>> GetRateById(int id)
         {
           if (_context.Rates == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Rates/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRate(int id, Rate rate)
+        public async Task<IActionResult> UpdateRateById(int id, Rate rate)
         {
             if (id != rate.Rateid)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Rates
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Rate>> PostRate(Rate rate)
+        public async Task<ActionResult<Rate>> CreateRate(Rate rate)
         {
           if (_context.Rates == null)
           {
@@ -112,7 +112,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Rates/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRate(int id)
+        public async Task<IActionResult> DeleteRateById(int id)
         {
             if (_context.Rates == null)
             {

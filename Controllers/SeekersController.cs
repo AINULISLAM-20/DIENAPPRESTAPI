@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Seekers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Seeker>>> GetSeekers()
+        public async Task<ActionResult<IEnumerable<Seeker>>> GetAllSeekers()
         {
           if (_context.Seekers == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Seekers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Seeker>> GetSeeker(int id)
+        public async Task<ActionResult<Seeker>> GetSeekerById(int id)
         {
           if (_context.Seekers == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Seekers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSeeker(int id, Seeker seeker)
+        public async Task<IActionResult> UpdateSeekerById(int id, Seeker seeker)
         {
             if (id != seeker.Skeerid)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Seekers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Seeker>> PostSeeker(Seeker seeker)
+        public async Task<ActionResult<Seeker>> createSeeker(Seeker seeker)
         {
           if (_context.Seekers == null)
           {
@@ -98,7 +98,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Seekers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSeeker(int id)
+        public async Task<IActionResult> DeleteSeekerById(int id)
         {
             if (_context.Seekers == null)
             {

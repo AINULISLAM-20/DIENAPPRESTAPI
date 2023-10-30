@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Providerdetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Providerdetail>>> GetProviderdetails()
+        public async Task<ActionResult<IEnumerable<Providerdetail>>> GetAllProviderdetails()
         {
           if (_context.Providerdetails == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Providerdetails/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Providerdetail>> GetProviderdetail(int id)
+        public async Task<ActionResult<Providerdetail>> GetProviderdetailById(int id)
         {
           if (_context.Providerdetails == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Providerdetails/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProviderdetail(int id, Providerdetail providerdetail)
+        public async Task<IActionResult> UpdateProviderdetailById(int id, Providerdetail providerdetail)
         {
             if (id != providerdetail.Providerdetailsid)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Providerdetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Providerdetail>> PostProviderdetail(Providerdetail providerdetail)
+        public async Task<ActionResult<Providerdetail>> CreateProviderdetail(Providerdetail providerdetail)
         {
           if (_context.Providerdetails == null)
           {
@@ -112,7 +112,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Providerdetails/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProviderdetail(int id)
+        public async Task<IActionResult> DeleteProviderdetailById(int id)
         {
             if (_context.Providerdetails == null)
             {

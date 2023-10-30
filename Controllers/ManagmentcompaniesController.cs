@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Managmentcompanies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Managmentcompany>>> GetManagmentcompanies()
+        public async Task<ActionResult<IEnumerable<Managmentcompany>>> GetAllManagmentcompanies()
         {
           if (_context.Managmentcompanies == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Managmentcompanies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Managmentcompany>> GetManagmentcompany(int id)
+        public async Task<ActionResult<Managmentcompany>> GetManagmentcompanyById(int id)
         {
           if (_context.Managmentcompanies == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Managmentcompanies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutManagmentcompany(int id, Managmentcompany managmentcompany)
+        public async Task<IActionResult> UpdateManagmentcompanyById(int id, Managmentcompany managmentcompany)
         {
             if (id != managmentcompany.ManagmentId)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Managmentcompanies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Managmentcompany>> PostManagmentcompany(Managmentcompany managmentcompany)
+        public async Task<ActionResult<Managmentcompany>> CreateManagmentcompany(Managmentcompany managmentcompany)
         {
           if (_context.Managmentcompanies == null)
           {
@@ -98,7 +98,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Managmentcompanies/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteManagmentcompany(int id)
+        public async Task<IActionResult> DeleteManagmentcompanyById(int id)
         {
             if (_context.Managmentcompanies == null)
             {

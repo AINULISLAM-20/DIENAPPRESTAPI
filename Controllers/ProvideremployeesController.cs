@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Provideremployees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Provideremployee>>> GetProvideremployees()
+        public async Task<ActionResult<IEnumerable<Provideremployee>>> GetAllProvideremployees()
         {
           if (_context.Provideremployees == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Provideremployees/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Provideremployee>> GetProvideremployee(int id)
+        public async Task<ActionResult<Provideremployee>> GetProvideremployeeById(int id)
         {
           if (_context.Provideremployees == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Provideremployees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProvideremployee(int id, Provideremployee provideremployee)
+        public async Task<IActionResult> UpdateProvideremployeeById(int id, Provideremployee provideremployee)
         {
             if (id != provideremployee.Provideremployeeid)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Provideremployees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Provideremployee>> PostProvideremployee(Provideremployee provideremployee)
+        public async Task<ActionResult<Provideremployee>> CreateProvideremployee(Provideremployee provideremployee)
         {
           if (_context.Provideremployees == null)
           {
@@ -112,7 +112,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Provideremployees/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProvideremployee(int id)
+        public async Task<IActionResult> DeleteProvideremployeeById(int id)
         {
             if (_context.Provideremployees == null)
             {

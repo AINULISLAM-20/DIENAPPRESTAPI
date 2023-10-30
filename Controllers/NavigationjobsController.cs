@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Navigationjobs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Navigationjob>>> GetNavigationjobs()
+        public async Task<ActionResult<IEnumerable<Navigationjob>>> GetAllNavigationjobs()
         {
           if (_context.Navigationjobs == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Navigationjobs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Navigationjob>> GetNavigationjob(int? id)
+        public async Task<ActionResult<Navigationjob>> GetNavigationjobById(int? id)
         {
           if (_context.Navigationjobs == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Navigationjobs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNavigationjob(int? id, Navigationjob navigationjob)
+        public async Task<IActionResult> UpdateNavigationjobById(int? id, Navigationjob navigationjob)
         {
             if (id != navigationjob.NavigationjobId)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Navigationjobs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Navigationjob>> PostNavigationjob(Navigationjob navigationjob)
+        public async Task<ActionResult<Navigationjob>> CreateNavigationjob(Navigationjob navigationjob)
         {
           if (_context.Navigationjobs == null)
           {
@@ -98,7 +98,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Navigationjobs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteNavigationjob(int? id)
+        public async Task<IActionResult> DeleteNavigationjobById(int? id)
         {
             if (_context.Navigationjobs == null)
             {

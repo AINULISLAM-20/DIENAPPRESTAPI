@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Jobpayments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Jobpayment>>> GetJobpayments()
+        public async Task<ActionResult<IEnumerable<Jobpayment>>> GetAllJobpayments()
         {
           if (_context.Jobpayments == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Jobpayments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Jobpayment>> GetJobpayment(int? id)
+        public async Task<ActionResult<Jobpayment>> GetJobpaymentById(int? id)
         {
           if (_context.Jobpayments == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Jobpayments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutJobpayment(int? id, Jobpayment jobpayment)
+        public async Task<IActionResult>UpdateJobpaymentById(int? id, Jobpayment jobpayment)
         {
             if (id != jobpayment.JobpaymentId)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Jobpayments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Jobpayment>> PostJobpayment(Jobpayment jobpayment)
+        public async Task<ActionResult<Jobpayment>> CreateJobpayment(Jobpayment jobpayment)
         {
           if (_context.Jobpayments == null)
           {
@@ -98,7 +98,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Jobpayments/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteJobpayment(int? id)
+        public async Task<IActionResult> DeleteJobpaymentById(int? id)
         {
             if (_context.Jobpayments == null)
             {

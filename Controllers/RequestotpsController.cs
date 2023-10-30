@@ -23,7 +23,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Requestotps
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Requestotp>>> GetRequestotps()
+        public async Task<ActionResult<IEnumerable<Requestotp>>> GetAllRequestotps()
         {
           if (_context.Requestotps == null)
           {
@@ -34,7 +34,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // GET: api/Requestotps/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Requestotp>> GetRequestotp(int id)
+        public async Task<ActionResult<Requestotp>> GetRequestotpById(int id)
         {
           if (_context.Requestotps == null)
           {
@@ -53,7 +53,7 @@ namespace DIENAPPRESTAPI.Controllers
         // PUT: api/Requestotps/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRequestotp(int id, Requestotp requestotp)
+        public async Task<IActionResult> UpdateRequestotpById(int id, Requestotp requestotp)
         {
             if (id != requestotp.Otpid)
             {
@@ -84,7 +84,7 @@ namespace DIENAPPRESTAPI.Controllers
         // POST: api/Requestotps
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Requestotp>> PostRequestotp(Requestotp requestotp)
+        public async Task<ActionResult<Requestotp>> CreateRequestotp(Requestotp requestotp)
         {
           if (_context.Requestotps == null)
           {
@@ -98,7 +98,7 @@ namespace DIENAPPRESTAPI.Controllers
 
         // DELETE: api/Requestotps/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRequestotp(int id)
+        public async Task<IActionResult> DeleteRequestotpById(int id)
         {
             if (_context.Requestotps == null)
             {
