@@ -33,8 +33,6 @@ public partial class DIENAPPRESTAPIContext : DbContext
 
     public virtual DbSet<Rate> Rates { get; set; }
 
-    public virtual DbSet<Registration> Registrations { get; set; }
-
     public virtual DbSet<Requestotp> Requestotps { get; set; }
 
     public virtual DbSet<Seeker> Seekers { get; set; }
@@ -128,8 +126,9 @@ public partial class DIENAPPRESTAPIContext : DbContext
 
         modelBuilder.Entity<Jobpayment>(entity =>
         {
+            entity.HasKey(e => e.JobpaymentId).HasName("PRIMARY");
+
             entity
-                .HasNoKey()
                 .ToTable("jobpayment")
                 .UseCollation("utf8mb4_bin");
 
@@ -242,8 +241,8 @@ public partial class DIENAPPRESTAPIContext : DbContext
 
         modelBuilder.Entity<Navigationjob>(entity =>
         {
+            entity.HasKey(e => e.NavigationjobId).HasName("PRIMARY");
             entity
-                .HasNoKey()
                 .ToTable("navigationjob")
                 .UseCollation("utf8mb4_bin");
 
@@ -435,29 +434,6 @@ public partial class DIENAPPRESTAPIContext : DbContext
             entity.Property(e => e.Ratename)
                 .HasMaxLength(50)
                 .HasColumnName("ratename");
-        });
-
-        modelBuilder.Entity<Registration>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("registration");
-
-            entity.HasIndex(e => e.Registrationid, "registrationid");
-
-            entity.Property(e => e.Email)
-                .HasMaxLength(250)
-                .HasColumnName("email");
-            entity.Property(e => e.Phonenumber)
-                .HasColumnType("int(15)")
-                .HasColumnName("phonenumber");
-            entity.Property(e => e.Registrationid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("int(11)")
-                .HasColumnName("registrationid");
-            entity.Property(e => e.Username)
-                .HasMaxLength(50)
-                .HasColumnName("username");
         });
 
         modelBuilder.Entity<Requestotp>(entity =>
